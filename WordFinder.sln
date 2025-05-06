@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.Console", "WordFinder.Console\WordFinder.Console.csproj", "{ABE1349E-DA63-4BE4-AFD7-47726C1AFBB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.Library", "WordFinder.Library\WordFinder.Library.csproj", "{34DC9D0D-5A83-4ADC-984C-5413A9A1D688}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.Library.Tests", "WordFinder.Library.Tests\WordFinder.Library.Tests.csproj", "{57710281-D657-4146-840F-21E4A17FD367}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABE1349E-DA63-4BE4-AFD7-47726C1AFBB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE1349E-DA63-4BE4-AFD7-47726C1AFBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE1349E-DA63-4BE4-AFD7-47726C1AFBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE1349E-DA63-4BE4-AFD7-47726C1AFBB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34DC9D0D-5A83-4ADC-984C-5413A9A1D688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DC9D0D-5A83-4ADC-984C-5413A9A1D688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DC9D0D-5A83-4ADC-984C-5413A9A1D688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DC9D0D-5A83-4ADC-984C-5413A9A1D688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57710281-D657-4146-840F-21E4A17FD367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57710281-D657-4146-840F-21E4A17FD367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57710281-D657-4146-840F-21E4A17FD367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57710281-D657-4146-840F-21E4A17FD367}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D159FDAE-838A-4516-A7B5-51B595AD3082}
+	EndGlobalSection
+EndGlobal
