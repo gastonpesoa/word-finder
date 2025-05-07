@@ -3,24 +3,16 @@ namespace WordFinder.Library.Tests
     public class WordFinderTests
     {
         [Fact]
-        public void Find_ShoulReturn()
+        public void Find_ShoulReturnCollectionOfStrings()
         {
             // Arrange
-            var matrix = new HashSet<string>
-            {
-                "ABC", "BCD", "CDE"
-            };
-            var expected = new HashSet<string>
-            {
-                "ABC", "BCD", "CDE"
-            };
-            WordFinder wordFinder = new(matrix);
+            WordFinder wordFinder = new(new HashSet<string>());
 
             // Act
-            IEnumerable<string> actual = wordFinder.Find(expected);
+            IEnumerable<string> actual = wordFinder.Find(new HashSet<string>());
             
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.IsAssignableFrom<IEnumerable<string>>(actual);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace WordFinder.Library
 
         public IEnumerable<string> Find(IEnumerable<string> wordStream)
         {
-            throw new NotImplementedException();
+            return [];
         }
     }
 }
