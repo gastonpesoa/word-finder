@@ -1,5 +1,4 @@
-﻿
-namespace WordFinder.Library
+﻿namespace QuDeveloperChallenge.Library
 {
     public class WordFinder : IWordFinder
     {

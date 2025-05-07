@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.Console", "WordFinder.Console\WordFinder.Console.csproj", "{ABE1349E-DA63-4BE4-AFD7-47726C1AFBB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuDeveloperChallenge.Console", "QuDeveloperChallenge.Console\QuDeveloperChallenge.Console.csproj", "{ABE1349E-DA63-4BE4-AFD7-47726C1AFBB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.Library", "WordFinder.Library\WordFinder.Library.csproj", "{34DC9D0D-5A83-4ADC-984C-5413A9A1D688}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuDeveloperChallenge.Library", "QuDeveloperChallenge.Library\QuDeveloperChallenge.Library.csproj", "{34DC9D0D-5A83-4ADC-984C-5413A9A1D688}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFinder.Library.Tests", "WordFinder.Library.Tests\WordFinder.Library.Tests.csproj", "{57710281-D657-4146-840F-21E4A17FD367}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuDeveloperChallenge.Library.Tests", "QuDeveloperChallenge.Library.Tests\QuDeveloperChallenge.Library.Tests.csproj", "{57710281-D657-4146-840F-21E4A17FD367}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

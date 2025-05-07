@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WordFinder.Library\WordFinder.Library.csproj" />
+    <ProjectReference Include="..\QuDeveloperChallenge.Library\QuDeveloperChallenge.Library.csproj" />
   </ItemGroup>
 
   <ItemGroup>

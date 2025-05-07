@@ -1,4 +1,4 @@
-namespace WordFinder.Library.Tests
+namespace QuDeveloperChallenge.Library.Tests
 {
     public class WordFinderTests
     {
