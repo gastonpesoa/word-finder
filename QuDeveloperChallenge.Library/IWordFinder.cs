@@ -2,6 +2,6 @@
 {
     public interface IWordFinder
     {
-        IEnumerable<string> Find(IEnumerable<string> wordStream);
+        IEnumerable<string> Find(IEnumerable<string> wordstream);
     }
 }

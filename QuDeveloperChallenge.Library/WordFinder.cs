@@ -2,39 +2,74 @@
 {
     public class WordFinder : IWordFinder
     {
-        private readonly IEnumerable<string> _matrix;
+        private const int MatrixMaxSize = 64;
+        private string[] _matrix = [];
 
+        // TODO Test matrix - null and size 
         public WordFinder(IEnumerable<string> matrix)
         {
-            _matrix = matrix;
+            Matrix = [.. matrix];
         }
 
-        public IEnumerable<string> Find(IEnumerable<string> wordStream)
+        public string[] Matrix 
+        { 
+            get => _matrix;
+            private set
+            {
+                if (!string.IsNullOrEmpty(value?.FirstOrDefault()))
+                {
+                    int firstRowLength = value.First().Length;
+
+                    if (firstRowLength > MatrixMaxSize) 
+                    {
+                        return;
+                    }
+
+                    foreach (var row in value)
+                    {
+                        if (row.Length != firstRowLength)
+                        {
+                            return;
+                        }
+                    }
+
+                    _matrix = value;
+                }
+            }
+        }
+
+        public IEnumerable<string> Find(IEnumerable<string> wordstream)
         {
+            HashSet<string> wordSet = [.. wordstream];
             HashSet<string> searchResults = [];
 
-            foreach (string word in wordStream)
+            foreach (string word in wordSet)
             {
-                foreach (string row in _matrix)
+                for (int row = 0; row < Matrix.Length; row++)
                 {
-                    for (int col = 0; col < row.Length; col++)
+                    for (int col = 0; col < Matrix[row].Length; col++)
                     {
-                        if (row[col] == word[0])
+                        if (Matrix[row][col] != word[0])
                         {
-                            for (int charAt = 1; charAt < word.Length; charAt++)
+                            continue;
+                        }
+
+                        for (int wordCharIndex = 1; wordCharIndex < word.Length; wordCharIndex++)
+                        {
+                            int colIndexToCompare = col + wordCharIndex;
+                            int rowIndexToCompare = row + wordCharIndex;
+
+                            if ((colIndexToCompare >= Matrix[row].Length || Matrix[row][colIndexToCompare] != word[wordCharIndex])
+                                && (rowIndexToCompare >= Matrix.Length || Matrix[rowIndexToCompare][col] != word[wordCharIndex])
+                                )
                             {
-                                if (row[col + charAt] == word[charAt])
-                                {
-                                    if (word.Length == charAt + 1)
-                                    {
-                                        searchResults.Add(word);
-                                        break;
-                                    }
-                                }
-                                else
-                                {
-                                    break;
-                                }
+                                break;
+                            }
+
+                            if (word.Length == wordCharIndex + 1)
+                            {
+                                searchResults.Add(word);
+                                break;
                             }
                         }
                     }
