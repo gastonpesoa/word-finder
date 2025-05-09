@@ -8,10 +8,10 @@ namespace QuDeveloperChallenge.Library.Tests
             // Arrange
             string[] matrix = [];
             WordFinder wordFinder = new(matrix);
-            string[] wordStream = [];
+            string[] wordstream = [];
 
             // Act
-            IEnumerable<string> actual = wordFinder.Find(wordStream);
+            IEnumerable<string> actual = wordFinder.Find(wordstream);
             
             // Assert
             Assert.IsAssignableFrom<IEnumerable<string>>(actual);
@@ -23,10 +23,10 @@ namespace QuDeveloperChallenge.Library.Tests
             // Arrange
             string[] matrix = ["djeeomrk"];
             WordFinder wordFinder = new(matrix);
-            string[] wordStream = ["cold"];
+            string[] wordstream = ["cold"];
 
             // Act
-            IEnumerable<string> actual = wordFinder.Find(wordStream);
+            IEnumerable<string> actual = wordFinder.Find(wordstream);
 
             // Assert
             Assert.Empty(actual);
@@ -90,6 +90,21 @@ namespace QuDeveloperChallenge.Library.Tests
 
             // Assert
             Assert.Empty(actual);
+        }
+
+        [Fact]
+        public void Find_ShoulReturnWordsFoundInAMatrixContainingThem()
+        {
+            // Arrange
+            string[] matrix = ["abcwec", "mwindx", "jcosac", "zoknro", "ilfehn", "edctyj",];
+            WordFinder wordFinder = new(matrix);
+            string[] expected = ["cold", "wind"];
+
+            // Act
+            IEnumerable<string> actual = wordFinder.Find(expected);
+
+            // Assert
+            Assert.Equal(expected, actual);
         }
     }
 }
