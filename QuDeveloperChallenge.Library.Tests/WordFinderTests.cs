@@ -1,7 +1,69 @@
+using Microsoft.VisualBasic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace QuDeveloperChallenge.Library.Tests
 {
     public class WordFinderTests
     {
+        [Fact]
+        public void Constructor_ShouldNotAssigNullToMatrixProp()
+        {
+            // Act
+            WordFinder wordFinder = new(null);
+
+            // Assert
+            Assert.Empty(wordFinder.Matrix);
+        }
+
+        [Fact]
+        public void Constructor_MatrixShouldNotExceed64Columns()
+        {
+            // Arrenge
+            string[] matrix = [
+                "mvtsopdsowuewmfvspeachitqkuvshqgkshrdczdhajepkedunqgfdhlaytkjrxqwe",
+                "yzxzeywktpearqvpeefhqowmruigynhjqzmivpxlycjjuqvzyhjgynczwbpxnhaert",
+                "axnfigkbnmqhdxkdxiksvdxyrxyegpguavajcvkiqdormjvqynqkcsttqhnwvivdfg"];
+
+            // Act
+            WordFinder wordFinder = new(matrix);
+
+            // Assert
+            Assert.Empty(wordFinder.Matrix);
+        }
+        
+        [Fact]
+        public void Constructor_MatrixShouldNotExceed64Rows()
+        {
+            // Arrange
+            string[] matrix = [
+                "jrx","nha","viv","qxf","ohb","fss","jrr","ccr","bly","jnt","idk","fre",
+                "lvs","ksm","vaz","dna","bcr","acp","efw","jgv","ctx","qdd","uum","tqi",
+                "sju","mfu","cwm","lbg","yie","vjf","vln","okv","ovh","mek","ald","pkx",
+                "poh","lpz","eha","tnf","eun","zkt","xtw","fdf","gfz","sac","ppc","dpa",
+                "cjd","qka","vpo","oue","gbp","hob","njs","tdn","byo","syx","ckx","yaw",
+                "cju","cju","cju","cju","yie","vjf","vln","okv","ovh","mek","ald","yaw"
+            ];
+
+            // Act
+            WordFinder wordFinder = new(matrix);
+
+            // Assert
+            Assert.Empty(wordFinder.Matrix);
+        }
+        
+        [Fact]
+        public void Constructor_AllRowsShouldContainTheSameNumberOfCharacters()
+        {
+            // Arrange
+            string[] matrix = ["jrx", "nhasdfsdf", "vivas", "qxfasdasdaiusfhiua"];
+
+            // Act
+            WordFinder wordFinder = new(matrix);
+
+            // Assert
+            Assert.Empty(wordFinder.Matrix);
+        }
+
         [Fact]
         public void Find_ShoulReturnCollectionOfStrings()
         {

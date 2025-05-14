@@ -5,9 +5,13 @@
         private const int MatrixMaxSize = 64;
         private string[] _matrix = [];
 
-        // TODO Test matrix - null and size 
         public WordFinder(IEnumerable<string> matrix)
         {
+            if (string.IsNullOrEmpty(matrix?.FirstOrDefault()))
+            {
+                return;
+            }
+
             Matrix = [.. matrix];
         }
 
@@ -16,25 +20,22 @@
             get => _matrix;
             private set
             {
-                if (!string.IsNullOrEmpty(value?.FirstOrDefault()))
-                {
-                    int firstRowLength = value.First().Length;
+                int firstRowLength = value.First().Length;
 
-                    if (firstRowLength > MatrixMaxSize) 
+                if (firstRowLength > MatrixMaxSize || value.Length > MatrixMaxSize) 
+                {
+                    return;
+                }
+
+                foreach (var row in value)
+                {
+                    if (row.Length != firstRowLength)
                     {
                         return;
                     }
-
-                    foreach (var row in value)
-                    {
-                        if (row.Length != firstRowLength)
-                        {
-                            return;
-                        }
-                    }
-
-                    _matrix = value;
                 }
+
+                _matrix = value;
             }
         }
 
