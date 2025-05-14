@@ -84,10 +84,17 @@ namespace QuDeveloperChallenge.Console
             ];
         }
 
-        [Benchmark]
-        public void RunFindBenchmark()
+        [Benchmark(Baseline = true)]
+        public void RunWordFinderBruteForceBenchmark()
         {
-            WordFinder wordFinder = new(_matrix);
+            WordFinderBruteForce wordFinder = new(_matrix);
+            wordFinder.Find(_wordstream).Consume(_consumer);
+        }
+        
+        [Benchmark]
+        public void RunWordFinderRecursiveBenchmark()
+        {
+            WordFinderBruteForce wordFinder = new(_matrix);
             wordFinder.Find(_wordstream).Consume(_consumer);
         }
     }

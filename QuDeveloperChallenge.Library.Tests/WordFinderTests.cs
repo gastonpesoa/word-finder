@@ -1,6 +1,3 @@
-using Microsoft.VisualBasic;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace QuDeveloperChallenge.Library.Tests
 {
     public class WordFinderTests
@@ -9,7 +6,7 @@ namespace QuDeveloperChallenge.Library.Tests
         public void Constructor_ShouldNotAssigNullToMatrixProp()
         {
             // Act
-            WordFinder wordFinder = new(null);
+            WordFinderBruteForce wordFinder = new(null);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -25,7 +22,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "axnfigkbnmqhdxkdxiksvdxyrxyegpguavajcvkiqdormjvqynqkcsttqhnwvivdfg"];
 
             // Act
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -45,7 +42,7 @@ namespace QuDeveloperChallenge.Library.Tests
             ];
 
             // Act
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -58,7 +55,7 @@ namespace QuDeveloperChallenge.Library.Tests
             string[] matrix = ["jrx", "nhasdfsdf", "vivas", "qxfasdasdaiusfhiua"];
 
             // Act
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -69,7 +66,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = [];
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] wordstream = [];
 
             // Act
@@ -84,7 +81,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["djeeomrk"];
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] wordstream = ["cold"];
 
             // Act
@@ -99,7 +96,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["abccoldwec"];
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] expected = ["cold"];
 
             // Act
@@ -114,7 +111,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["abccoldwerefvchillpoic"];
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] expected = ["cold", "chill"];
 
             // Act
@@ -129,7 +126,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["a", "b", "c", "c", "o", "l", "d", "w", "e", "r"];
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] expected = ["cold"];
 
             // Act
@@ -144,7 +141,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["a", "b", "c", "f", "t", "n", "d", "w", "e", "r"];
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] wordstream = ["cold"];
 
             // Act
@@ -166,7 +163,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "ilfehn", 
                 "edctyj"
             ];
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] expected = ["cold", "wind"];
 
             // Act
@@ -245,7 +242,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "dfwmdchmzeekawxrsviukznwgjbdbvrimfhmgaydkheacwxyzoqtbnvqsrmecju"
             ];
 
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] wordstream =
             [
                 "banana", "apple", "orange", "grape", "lemon", "melon", "peach", "berry", "mango", "guava",
@@ -334,7 +331,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "zmraydotgbtyeklylpqyyynqyrWINDhtbflacvkszyduzdtbvingerkzfplafgci"
             ];
 
-            WordFinder wordFinder = new(matrix);
+            WordFinderBruteForce wordFinder = new(matrix);
             string[] wordstream =
             [
                 "COLD", // * 1
