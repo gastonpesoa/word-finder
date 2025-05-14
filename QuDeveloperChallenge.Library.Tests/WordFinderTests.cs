@@ -172,7 +172,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "bbgwrurwdlfkqulohwjfcjemuhdzmtkzuxclsdteyehykqxmqwfqqzmdtazobyo",
                 "vubkjxnzzzgmyuaifhhwqdfywwutlmqgnsikjsqyaqgjsguxkdeflagydpnjsyx",
                 "hhfqtnxiwkmkebbhcufcbqdocjfyeqxpuuwbawewnrmtoxodrrvukgjypsaeckx",
-                "nlvbbnfgmbtwpsodkllozlmazbnyasahvnpgznddkguyzqhhoynuxtxlmvgnkdw",
+                "nlvbbnfgpapayaodkllozlmazbnyasahvnpgznddkguyzqhhoynuxtxlpapayaw",
                 "dfwmdchmzeekawxrsviukznwgjbdbvrimfhmgaydkheacwxyzoqtbnvqsrmecju"
             ];
 
@@ -190,6 +190,7 @@ namespace QuDeveloperChallenge.Library.Tests
             Assert.NotEmpty(actual);
             Assert.Contains("banana", actual);
             Assert.Contains("apple", actual);
+            Assert.Contains("papaya", actual);
         }
     }
 }

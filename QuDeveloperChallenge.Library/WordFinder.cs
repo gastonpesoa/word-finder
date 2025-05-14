@@ -53,6 +53,7 @@
                             SearchWordRecursive(word, row, col, 0))
                         {
                             searchResults.Add(word);
+                            col = col + word.Length >= Matrix[row].Length ? Matrix[row].Length - 1 : col + word.Length;
                         }
                     }
                 }
