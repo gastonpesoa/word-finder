@@ -5,10 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/gastonpesoa/word-finder">
-    <img src="./images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-  <h3 align="center">Word Finder</h3>
+  <h1 align="center">Word Finder</h1>
   <p align="center">
     A .NET solution to search a large stream of words in a character matrix!
   </p>
@@ -59,7 +56,7 @@
 
 Presented with a character matrix and a large stream of words, your task is to create a Class that searches the matrix to look for the words from the word stream. Words may appear horizontally, from left to right, or vertically, from top to bottom. In the example below, the word stream has four words and the matrix contains only three of those words ("chill", "cold" and "wind"):
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 The search code must be implemented as a class with the following interface:
 
