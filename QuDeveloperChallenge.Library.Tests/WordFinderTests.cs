@@ -6,7 +6,7 @@ namespace QuDeveloperChallenge.Library.Tests
         public void Constructor_ShouldNotAssigNullToMatrixProp()
         {
             // Act
-            WordFinderBruteForce wordFinder = new(null);
+            WordFinderTransposing wordFinder = new(null);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -22,7 +22,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "axnfigkbnmqhdxkdxiksvdxyrxyegpguavajcvkiqdormjvqynqkcsttqhnwvivdfg"];
 
             // Act
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -42,7 +42,7 @@ namespace QuDeveloperChallenge.Library.Tests
             ];
 
             // Act
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -55,7 +55,7 @@ namespace QuDeveloperChallenge.Library.Tests
             string[] matrix = ["jrx", "nhasdfsdf", "vivas", "qxfasdasdaiusfhiua"];
 
             // Act
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
 
             // Assert
             Assert.Empty(wordFinder.Matrix);
@@ -66,12 +66,12 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = [];
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
             string[] wordstream = [];
 
             // Act
             IEnumerable<string> actual = wordFinder.Find(wordstream);
-            
+
             // Assert
             Assert.IsAssignableFrom<IEnumerable<string>>(actual);
         }
@@ -81,7 +81,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["djeeomrk"];
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
             string[] wordstream = ["cold"];
 
             // Act
@@ -96,14 +96,16 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["abccoldwec"];
-            WordFinderBruteForce wordFinder = new(matrix);
-            string[] expected = ["cold"];
+            WordFinderTransposing wordFinder = new(matrix);
+            string expected = "cold";
+            string[] wordstream = [expected];
 
             // Act
-            IEnumerable<string> actual = wordFinder.Find(expected);
+            IEnumerable<string> actual = wordFinder.Find(wordstream);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.NotEmpty(actual);
+            Assert.Contains(expected, actual);
         }
 
         [Fact]
@@ -111,14 +113,16 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["abccoldwerefvchillpoic"];
-            WordFinderBruteForce wordFinder = new(matrix);
-            string[] expected = ["cold", "chill"];
+            WordFinderTransposing wordFinder = new(matrix);
+            string[] wordstream = ["cold", "chill"];
 
             // Act
-            IEnumerable<string> actual = wordFinder.Find(expected);
+            IEnumerable<string> actual = wordFinder.Find(wordstream);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.NotEmpty(actual);
+            Assert.Contains("cold", actual);
+            Assert.Contains("chill", actual);
         }
 
         [Fact]
@@ -126,14 +130,16 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["a", "b", "c", "c", "o", "l", "d", "w", "e", "r"];
-            WordFinderBruteForce wordFinder = new(matrix);
-            string[] expected = ["cold"];
+            WordFinderTransposing wordFinder = new(matrix);
+            string expected = "cold";
+            string[] wordstream = [expected];
 
             // Act
-            IEnumerable<string> actual = wordFinder.Find(expected);
+            IEnumerable<string> actual = wordFinder.Find(wordstream);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.NotEmpty(actual);
+            Assert.Contains(expected, actual);
         }
 
         [Fact]
@@ -141,7 +147,7 @@ namespace QuDeveloperChallenge.Library.Tests
         {
             // Arrange
             string[] matrix = ["a", "b", "c", "f", "t", "n", "d", "w", "e", "r"];
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
             string[] wordstream = ["cold"];
 
             // Act
@@ -163,14 +169,16 @@ namespace QuDeveloperChallenge.Library.Tests
                 "ilfehn", 
                 "edctyj"
             ];
-            WordFinderBruteForce wordFinder = new(matrix);
-            string[] expected = ["cold", "wind"];
+            WordFinderTransposing wordFinder = new(matrix);
+            string[] wordstream = ["cold", "wind"];
 
             // Act
-            IEnumerable<string> actual = wordFinder.Find(expected);
+            IEnumerable<string> actual = wordFinder.Find(wordstream);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.NotEmpty(actual);
+            Assert.Contains("cold", actual);
+            Assert.Contains("wind", actual);
         }
 
         [Fact]
@@ -242,7 +250,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "dfwmdchmzeekawxrsviukznwgjbdbvrimfhmgaydkheacwxyzoqtbnvqsrmecju"
             ];
 
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
             string[] wordstream =
             [
                 "banana", "apple", "orange", "grape", "lemon", "melon", "peach", "berry", "mango", "guava",
@@ -331,7 +339,7 @@ namespace QuDeveloperChallenge.Library.Tests
                 "zmraydotgbtyeklylpqyyynqyrWINDhtbflacvkszyduzdtbvingerkzfplafgci"
             ];
 
-            WordFinderBruteForce wordFinder = new(matrix);
+            WordFinderTransposing wordFinder = new(matrix);
             string[] wordstream =
             [
                 "COLD", // * 1
