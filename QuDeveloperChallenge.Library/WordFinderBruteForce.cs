@@ -43,29 +43,6 @@
                 .Select(word => word.Key);
         }
 
-        private bool SearchWordRecursive(string word, int row, int col, int wordCharIndex)
-        {
-            if (wordCharIndex == word.Length)
-            {
-                return true;
-            }
-
-            if (row >= Matrix.Length ||
-                col >= Matrix[row].Length ||
-                Matrix[row][col] != word[wordCharIndex])
-            {
-                return false;
-            }
-
-            if (SearchWordRecursive(word, row, col + 1, wordCharIndex + 1) ||
-                SearchWordRecursive(word, row + 1, col, wordCharIndex + 1))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         private bool SearchWord(string word, int row, int col)
         {
             for (int wordCharIndex = 1; wordCharIndex < word.Length; wordCharIndex++)
