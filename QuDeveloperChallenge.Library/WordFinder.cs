@@ -42,7 +42,7 @@
         public IEnumerable<string> Find(IEnumerable<string> wordstream)
         {
             HashSet<string> wordSet = [.. wordstream];
-            HashSet<string> searchResults = [];
+            Dictionary<string, int> searchResults = new(StringComparer.OrdinalIgnoreCase);
 
             foreach (string word in wordSet)
             {
@@ -51,16 +51,23 @@
                     for (int col = 0; col < Matrix[row].Length; col++)
                     {
                         if (word[0] == Matrix[row][col] && 
-                            SearchWordRecursive(word, row, col, 0))
+                            SearchWord(word, row, col))
                         {
-                            searchResults.Add(word);
+                            if (!searchResults.TryAdd(word, 1))
+                            {
+                                searchResults[word] = searchResults[word] + 1;
+                            }
+
                             col = col + word.Length >= Matrix[row].Length ? Matrix[row].Length - 1 : col + word.Length;
                         }
                     }
                 }
             }
 
-            return searchResults;
+            return searchResults
+                .OrderByDescending(word => word.Value)
+                .Take(10)
+                .Select(word => word.Key);
         }
 
         private bool SearchWordRecursive(string word, int row, int col, int wordCharIndex)
@@ -107,6 +114,5 @@
 
             return false;
         }
-
     }
 }

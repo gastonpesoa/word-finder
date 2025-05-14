@@ -158,7 +158,14 @@ namespace QuDeveloperChallenge.Library.Tests
         public void Find_ShoulReturnWordsFoundInAMatrixContainingThem()
         {
             // Arrange
-            string[] matrix = ["abcwec", "mwindx", "jcosac", "zoknro", "ilfehn", "edctyj",];
+            string[] matrix = [
+                "abcwec", 
+                "mwindx", 
+                "jcosac", 
+                "zoknro", 
+                "ilfehn", 
+                "edctyj"
+            ];
             WordFinder wordFinder = new(matrix);
             string[] expected = ["cold", "wind"];
 
@@ -253,6 +260,127 @@ namespace QuDeveloperChallenge.Library.Tests
             Assert.Contains("banana", actual);
             Assert.Contains("apple", actual);
             Assert.Contains("papaya", actual);
+        }
+
+        [Fact]
+        public void Find_ShouldReturnTheTopTenMostRepeatedWordsFromTheWordstreamFoundInTheMatrix()
+        {
+            // Arrange
+            string[] matrix =
+            [
+                "chgpvochmwypvksurewoeyxrvgxmfaHARVESTqmumawmqbpnowomeodapwfsvfyv",
+                "fxmgygdhrqrggvvdzrgkgodiuvmtyslcxwuqppuqrvbsxrojhjbeepdfsjdicmtn",
+                "xkwpbiqGOLDENkedybrlafGOLDENpskhimltfpohabokygxnjgzvpvmddfmcresw",
+                "cwhjwuwwklfeoqulsezFLORALomcwbwxzxkgqwHARVESTqiehigsxqpsbxxvwGvx",
+                "agdhxlombaifududwbilfdlsapbfmsalohgerclajtSUNSHINEihofsmxtaihOir",
+                "nlcoilexhfdwbgypqcBEACHflogvaGLACIERytbesooyuaoqmijimasvewhvsLjg",
+                "GnjjvghymjwzivecHUMIDrrzfcqnjpqurdoxunhottckyltgzthjjptgnyiqxDpy",
+                "OazfinpeswzwkcyvodgdyktjeeenqkieLEAVESwvlfukweitjjnmkyvkwykouEyu",
+                "LtjjvcferfpfqryketekmvqBEACHsigrjvabmdzpwzsbpfmazyrcpzgjjeumrNuj",
+                "Dwnmvglmeztamccbqdhljcrlwmnamndcwkqouajgopffxrdtonwlzolrdckxlgsb",
+                "EqnzafobabudzhowgsnqowbmnFLORALcyykaptdhdachnivgizgscjttifmduhnc",
+                "NqgemijsuauyiqjvzryrcqkHARVESTnksjmfxgkulffzqpimofdoaiyeykcqavxk",
+                "aqhwvkpizanuiobnsmdhoztrnkecqdizafzoqrhaugkobkfuuuqanjcmixxmpcia",
+                "HdhfyfkphysqvnwaqfugjBLIZZARDhyygousutmGOLDENuahjqxrxwopjsxxousk",
+                "Upnhabnvjpevzclcyyiortbuyhewqmqvjvlruigjmbqdpmkofizczcbnomnuixkp",
+                "MykmiegmcajvnsxgfkvdazaxycirkdyLEAVEShcweeyxztyjfqzlttcqjyzevrfn",
+                "Iavgpiumakllkoozvbluextxkyqzaojhfveduhmmpglbcnbwihszlpszjfnnsnlu",
+                "DdxohbchrlnvjHARVESTqmlyzbheqxamuzjuklykjsytqtxonrjotwcklgkgjett",
+                "safiswckeoiktxhpmzllvvnfmszxrkuqrlmcsordjjsdajilkxkoijjxmgvdbuqm",
+                "cefjqldmpwkoudjmBEACHsitxxoossjwgzcpvzpvexlpcaakzqhudGOLDENwwovo",
+                "bztlzbfvzvpkyzcuvyzqttHARVESThkobxnqrzqzdxptdegqywhwtrpzwxszzygk",
+                "qdmfnvhfwfbpqqnmqdznquwrcglrydxuoptpmqFREEZExamavwvjdqtrbphndhxk",
+                "wlmdybzrlxgzdzgocxwyfuzsrneljiqhjenodwveqeeanmmarrfjfhrejxialuns",
+                "sbypjirkcatumorfezemzttnfxlmflaumqqjqoHUMIDrhupssjaqsvwlspidpwhw",
+                "enhmnvzpdnogfxcnbrjeebzqomdnkxlfxirpccnwhvzawifbjtoaqoiqvvubdncz",
+                "dqggcpuesvekzbmvkbquzsaxwgogknbudxuqryGOLDENxfcazzkhrzyipfpeqvet",
+                "dpxwfnnayzhrtkeikmcihdtlhwmnruiiuqflSNOWdmxsqrhqshjgnyjpjvxqbtif",
+                "cdtczyyugjjtzfgowhpmjewqmnwebkiucuzwrddvhffsjbcsbpepltmuaxmmaaxt",
+                "zblsqzaxccodrnytzntobopcdanSUNSHINEdqygrsgnmwnvhbldleyndahwtiurk",
+                "oyvhxidrjeoinfknbbzcuxjnHUMIDmrxtCHILLpcfocmektrstpttgcqqvoqsmdn",
+                "gjmswvdsrnpicdsyozqpovlpkckwakyBLIZZARDkzbwrhyegomacdchnnunoyaot",
+                "ymlxqjqdnbsqoestoaahetFALLyxbmxvkytnsvpgvtixwhxmmqnarkuvtinhdizw",
+                "uwshkkuqaipspjptznodicxtlwsnswruofqscGLACIERlmfpsywovgmdlfkbthtv",
+                "aldwxxpqhpmzvgunbrpzbdpgzyFALLdiigcdqjmkqamrBEACHrcefsvmgxdgohwv",
+                "ppxvdwldpyzgjzydxwrxxosbzjljalyvlzzetuouqqbmaxrgnhsxpicvoearadai",
+                "wjyeofweohagfogpgqagxffnoqnzqunbujtdjtybkcftvolyopuadzljejkuvrfi",
+                "hnascbcxogdvwxpuarnwibFROSTczvfhxqrhurtqkcfccfzmmyfzxakgcorskeps",
+                "umnbyynkruaftdqaosflnvfuclcgpmyxetxkdslhjljwedffluivcxnzxobnbwdq",
+                "ruasxsokjxaptzzivuzmiqfbgydduqjrtkuFALLivgkjljvgwfskqdcsccylriee",
+                "dyzykaxzfbswnnbpdekyfspFALLjlnvoxwgFREEZEqsfqjlquzhxowpygmorgler",
+                "FaxqxfahzfedCOLDrrztorrtrvzellotlcxgwgzlzxecqmjxndrcawdelowlgpje",
+                "Amnmrqpjiqffcewrgpdmgnyfmxmuqzfzyunllmxndyilxfhgwijtdudkrcocdiih",
+                "LmjwbwxtprbffsnbvetauseLEAVESasvfukfrycyoaimuryfzyvyujoyjxoywxca",
+                "LosaqupoyooqdhmcrbhveesddicqzaumjkmzFALLkedgvykhckgxpluxmuqkmoeo",
+                "owwpfjwvygvoludnuzsjupbjtbwdqgjycrxqvvsnjpigusmluwcemrptmwpdtlch",
+                "vblvwjrafaTROPICALwdwduLEAVEStorejevvuwwukqaxtpemnaffmhidrtcryvl",
+                "cwxtjarqnlrzzvvaqwffpypdjuoqnuvisgfduzeghbpjnhbxvvxdxofuitvfjhzw",
+                "kwdlyijtxyyqsuhjgvyqgdayzhfqajxtshwyqjfkvrsrpgszmdztoeblywztkivt",
+                "rrizfblspmcnfaydvdxksucbdjLEAVESzfktsjyuctqwwqqtheeaykjufknqatnz",
+                "izohqhuradxjwerrpsbobmskejltvhiarpzmiozzxdxfwyfgxiwoomzfyzmaklvn",
+                "nckolgxckkrsvpejjcuhfudwoasnrmscctflkibjprkkexhpnhrasexbepxednln",
+                "sonxxojtddtolcmwsjldxmebqyuqgxlicbygTROPICALlncuznvdunwbidgcpeav",
+                "fhvohuiamowfmwmavcynmdfikmqildknnwnckstyoknrhdhdjhmphimkmeoatpzn",
+                "veoxamzrqheTROPICALbrxwofsnGLACIERbbqsaehuxlspulmjubewjhjzjfsgwo",
+                "ntvxqonlvyvwkcpwuSUNSHINEjjawfqajffqgpbcdznndvdpsshqzdngdjltahjr",
+                "rswhdsyosandqhztlgbtlrxmnzogqmzwmktcxxghuawmkugxdnsibvsuzvmbhtnm",
+                "qhtxqmvsmICEdenqypjzsvjmfpwlxgukTROPICALnfervmdtgrpyauutacuwtolz",
+                "vesfyhmkhcdptsocfcapzfvepfdbkvgenjggesfohijmceokthlyyxmfotmersun",
+                "nkbdvdmwzddxiwvhtwlnywfklnznfmpmoihsqjcqubhyiikztgewjozvltsafmrl",
+                "emwbsrjsvhjkiwdgowymjsjwigfdswntwnsbqeizvcwufojryldowqgiuvnbjajm",
+                "odqritmmulcxlyzwnrtxhofcbpqoygtmjnsFLORALhetqlkaeocczlekppudseql",
+                "vvqrzyakyfzrqfsqsmkwdnzaevwqkggorazyonkuzkyhsipknojvyelgkagasmct",
+                "mjocyzsegklprgdmrozdhexexoumvcemkyqegfekusbltzgmwzjasehrjhuobdeb",
+                "zmraydotgbtyeklylpqyyynqyrWINDhtbflacvkszyduzdtbvingerkzfplafgci"
+            ];
+
+            WordFinder wordFinder = new(matrix);
+            string[] wordstream =
+            [
+                "COLD", // * 1
+                "CHILL", // * 1
+                "WIND", // * 1
+                "SNOW", // * 1
+                "FROST", // * 1
+                "ICE", // * 2
+                "BLIZZARD", // * 2
+                "FREEZE", // * 2
+                // From here should be the returned values
+                "GLACIER", // * 3 
+                "FLORAL", // * 3 
+                "SUNSHINE", // * 3
+                "BEACH", // * 4
+                "TROPICAL", // * 4 
+                "HUMID", // * 4
+                "HARVEST", // * 5
+                "LEAVES", // * 5
+                "FALL", // * 6
+                "GOLDEN" // * 7
+            ];
+
+            // Act
+            IEnumerable<string> actual = wordFinder.Find(wordstream);
+
+            // Assert
+            Assert.NotEmpty(actual);
+            Assert.Contains("GLACIER", actual);
+            Assert.Contains("FLORAL", actual);
+            Assert.Contains("SUNSHINE", actual);
+            Assert.Contains("BEACH", actual);
+            Assert.Contains("TROPICAL", actual);
+            Assert.Contains("HUMID", actual);
+            Assert.Contains("HARVEST", actual);
+            Assert.Contains("LEAVES", actual);
+            Assert.Contains("FALL", actual);
+            Assert.Contains("GOLDEN", actual);
+            Assert.DoesNotContain("COLD", actual);
+            Assert.DoesNotContain("CHILL", actual);
+            Assert.DoesNotContain("WIND", actual);
+            Assert.DoesNotContain("SNOW", actual);
+            Assert.DoesNotContain("FROST", actual);
+            Assert.DoesNotContain("ICE", actual);
+            Assert.DoesNotContain("BLIZZARD", actual);
+            Assert.DoesNotContain("FREEZE", actual);
         }
     }
 }
